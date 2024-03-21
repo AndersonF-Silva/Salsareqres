@@ -3,10 +3,9 @@ package br.com.SalsaTech;
 import io.restassured.RestAssured;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
+
 
 public class ListUsersTest {
     @BeforeClass
@@ -60,6 +59,4 @@ public class ListUsersTest {
                 .body("data.id", contains(7, 8, 9, 10, 11, 12))
                 .log().all();
     }
-
-
 }
