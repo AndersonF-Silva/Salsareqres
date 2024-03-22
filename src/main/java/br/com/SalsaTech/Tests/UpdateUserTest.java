@@ -1,35 +1,33 @@
 package br.com.SalsaTech.Tests;
 
-
 import br.com.SalsaTech.POJO.POJOUser;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.baseURI;
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
 
-public class CreateUserTest {
+public class UpdateUserTest {
     @BeforeClass
     public static void setup() {
+
         baseURI = "https://reqres.in/";
     }
-
     @Test
-    public void deveSalvarUser() {
-        POJOUser user = new POJOUser("morpheus", "leader");
+    public void deveAlterarUsuario() {
+        POJOUser user = new POJOUser("morpheus", "zion resident");
         given()
                 .log().all()
                 .contentType("application/json")
                 .body(user)
                 .when()
-                .post("/api/users")
+                .put("/api/users/2")
                 .then()
                 .log().all()
-                .statusCode(201)
-                .body("id", is(notNullValue()))
+                .statusCode(200)
                 .body("name", is("morpheus"))
-                .body("job", is("leader"))
+                .body("job", is("zion resident"))
         ;
     }
 }
