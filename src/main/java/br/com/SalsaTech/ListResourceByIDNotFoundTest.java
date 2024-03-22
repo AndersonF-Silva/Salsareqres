@@ -3,19 +3,19 @@ package br.com.SalsaTech;
 import io.restassured.RestAssured;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import static io.restassured.RestAssured.given;
 
-public class ListUserByIDNotFoundTest {
-
+public class ListResourceByIDNotFoundTest {
     @BeforeClass
     public static void setup() {
         RestAssured.baseURI = "https://reqres.in/";
     }
     @Test
-    public void ValidarUsuarioPorIDQueNaoExiste() {
+    public void ValidarCorPorIDQueNaoExiste() {
         given()
                 .when()
-                .get("api/users/23")
+                .get("/api/unknown/23")
                 .then()
                 .statusCode(404);
     }
