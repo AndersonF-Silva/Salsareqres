@@ -1,21 +1,18 @@
 package br.com.SalsaTech.Tests;
 
 import io.restassured.RestAssured;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 public class ListAllResourceTest {
-    @BeforeClass
+    @BeforeAll
     public static void setup() {
-        RestAssured.baseURI = "https://reqres.in/";
+        RestAssured.baseURI = "https://reqres.in";
     }
-
     @Test
     public void ValidarSePage1Test() {
         given()
@@ -37,7 +34,6 @@ public class ListAllResourceTest {
                 .log().all()
         ;
     }
-
     @Test
     public void ListarTodasCoresValidarURLResponseTest() {
         given()
@@ -49,7 +45,6 @@ public class ListAllResourceTest {
                 .log().all()
         ;
     }
-
     @Test
     public void ListarTodasCoresValidarTextResponseTest() {
         given()
@@ -61,7 +56,6 @@ public class ListAllResourceTest {
                 .log().all()
         ;
     }
-
     @Test
     public void ListarTodasCoresValidarQuantidadeRegistrosResponseTest() {
         given()
@@ -73,7 +67,6 @@ public class ListAllResourceTest {
                 .body("data.id", contains(1, 2, 3, 4, 5, 6))
                 .log().all();
     }
-
     @Test
     public void ValidarListaNomesCoresTest() {
         given()
@@ -84,7 +77,6 @@ public class ListAllResourceTest {
                 .body("data.name", hasItems("cerulean", "fuchsia rose", "true red", "aqua sky", "tigerlily", "blue turquoise"))
                 .log().all();
     }
-
     @Test
     public void ValidarAnoCoresTest() {
         given()
@@ -95,7 +87,6 @@ public class ListAllResourceTest {
                 .body("data.year", contains(2000, 2001, 2002, 2003, 2004, 2005))
                 .log().all();
     }
-
     @Test
     public void ValidarRGBCorTrueRedTest() {
 
@@ -107,7 +98,6 @@ public class ListAllResourceTest {
                 .body("data.color[3]", is("#7BC4C4"))
                 .log().all();
     }
-
     @Test
     public void ValidarNomeBlueTurquoiseTest() {
         ArrayList<String> nomes =
@@ -118,10 +108,8 @@ public class ListAllResourceTest {
                         .statusCode(200)
                         .extract().path("data.name.findAll{it.startsWith('blue')}")
                 ;
-        Assert.assertEquals(1, nomes.size());
-        Assert.assertTrue(nomes.get(0).equalsIgnoreCase("blUe TurQuOisE"));
-        Assert.assertEquals(nomes.get(0).toUpperCase(), "blue turquoise".toUpperCase());
+        Assertions.assertEquals(1, nomes.size());
+        Assertions.assertTrue(nomes.get(0).equalsIgnoreCase("blUe TurQuOisE"));
+        Assertions.assertEquals(nomes.get(0).toUpperCase(), "blue turquoise".toUpperCase());
     }
-
-
 }

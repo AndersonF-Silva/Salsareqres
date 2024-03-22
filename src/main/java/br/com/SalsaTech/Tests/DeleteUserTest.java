@@ -1,24 +1,24 @@
 package br.com.SalsaTech.Tests;
 
+import io.restassured.RestAssured;
 import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
 public class DeleteUserTest {
-    @BeforeClass
+    @BeforeAll
     public static void setup() {
-
-        baseURI = "https://reqres.in/";
+        RestAssured.baseURI = "https://reqres.in";
     }
-
-    @Test
+     @Test
     public void deveDeletarUser() {
         given()
                 .log().all()
                 .when()
-                .delete("https://reqres.in/api/{entidade}/{userID}", "users", "2")
+                .delete("/api/{entidade}/{userID}", "users", "2")
                 .then()
                 .log().all()
                 .statusCode(204)
