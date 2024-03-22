@@ -14,6 +14,17 @@ public class ListUsersTest {
     }
 
     @Test
+    public void ValidarSePage2Test() {
+        given()
+                .when()
+                .get("api/users?page=2")
+                .then()
+                .statusCode(200)
+                .body("page", is(2))
+                .log().all()
+        ;
+    }
+    @Test
     public void ListarTodosUsuariosTest () {
         given()
                 .when()
@@ -59,4 +70,6 @@ public class ListUsersTest {
                 .body("data.id", contains(7, 8, 9, 10, 11, 12))
                 .log().all();
     }
+
+
 }
