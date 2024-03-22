@@ -6,12 +6,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-public class ListAllResource {
+public class ListAllResourceTest {
     @BeforeClass
     public static void setup() {
         RestAssured.baseURI = "https://reqres.in/";
