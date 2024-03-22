@@ -1,4 +1,4 @@
-package br.com.SalsaTech;
+package br.com.SalsaTech.Tests;
 
 import io.restassured.RestAssured;
 import org.junit.Assert;

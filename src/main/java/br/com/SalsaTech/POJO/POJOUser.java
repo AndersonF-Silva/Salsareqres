@@ -1,4 +1,4 @@
-package br.com.SalsaTech;
+package br.com.SalsaTech.POJO;
 
 public class POJOUser {
     private String name;

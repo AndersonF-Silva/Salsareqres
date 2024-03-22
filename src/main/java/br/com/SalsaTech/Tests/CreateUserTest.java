@@ -1,6 +1,7 @@
-package br.com.SalsaTech;
+package br.com.SalsaTech.Tests;
 
 
+import br.com.SalsaTech.POJO.POJOUser;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
